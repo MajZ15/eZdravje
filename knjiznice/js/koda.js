@@ -30,12 +30,33 @@ function getSessionId() {
  * @param stPacienta zaporedna številka pacienta (1, 2 ali 3)
  * @return ehrId generiranega pacienta
  */
+ 
+function generiranjePodatkovHead() {
+	generirajPodatke(1);
+	generirajPodatke(2);
+	generirajPodatke(3);
+}
+ 
+ 
 function generirajPodatke(stPacienta) {
-  ehrId = "";
+	
+  var ehr1 = "d99cf3db-a56a-4eae-b2c4-71a059cc4e56";
+  var ehr2 = "87da02a1-c0c9-4f59-bff0-74f21a47d5b5";
+  var ehr3 = "a167fb33-a03a-4310-8353-f187ba4cda73";
+  if (stPacienta == 1){
+  	window.alert("ehrID 1: " + ehr1);
+  	return ehr1;
+  }
+  else if (stPacienta == 2){
+  	window.alert("ehrID 2: " + ehr2);
+  	return ehr2;
+  }
+  else if (stPacienta == 3){
+  	window.alert("ehrID 3: " + ehr3);
+  	return ehr3;
+  }
 
-  // TODO: Potrebno implementirati
-
-  return ehrId;
+  return ehr3;
 }
 
 
@@ -79,10 +100,10 @@ function generirajPodatke(stPacienta) {
  	var teza2 = $("#dodajVitalnoTelesnaTeza2").val();
  	var BMI = izracunBMI();
  	var BMI2 = izracunBMI2();
- 	var ena = 0;
- 	var dva = 0;
- 	var tri = 0;
- 	var stiri = 0;
+ 	var ena = $("#dodajVitalnoKrvniTlakSistolicni").val();
+ 	var dva = $("#dodajVitalnoKrvniTlakSistolicni2").val();
+ 	var tri = $("#dodajVitalnoKrvniTlakDiastolicni").val();
+ 	var stiri = $("#dodajVitalnoKrvniTlakDiastolicni2").val();
  	var vrednosti =  [
  		visina,
  		visina2,
@@ -103,7 +124,11 @@ function generirajPodatke(stPacienta) {
  	izracunBMI();
  	izracunBMI2()
  }
- 
+ /* nedokončano
+ function bodyMassIndexDatabase() {
+ 	
+ }
+ */
  
 function kreirajEHRzaBolnika() {
 	sessionId = getSessionId();
@@ -188,6 +213,28 @@ function preberiEHRodBolnika() {
 		});
 	}
 }
+
+/*function izpolniPoEHRodBolnika() {
+	sessionId = getSessionId();
+
+	var ehrId = $("#preberiEHRid").val();
+	
+	if (!ehrId || ehrId.trim().length == 0) {
+		$("#preberiSporocilo").html("<span class='obvestilo label label-warning " +
+      "fade-in'>Prosim vnesite zahtevan podatek!");
+	} else{
+		$.ajax({
+			url: baseUrl + "/demographics/ehr/" + ehrId + "/party",
+			type: 'GET',
+			headers: {"Ehr-Session": sessionId},
+	    	success: function (data) {
+				var party = data.party;
+			//$("#kreirajIme").val() = party.firstNames;
+			//$("#kreirajPriimek").val() = party.lastNames;
+			//$("#kreirajDatumRojstva").val() = party.dateOfBirth;
+	})
+}
+*/
 
 
 /**

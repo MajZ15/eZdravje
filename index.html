@@ -31,7 +31,7 @@
         <ul class="nav navbar-nav">
           <li><a href="opis.html">Opis ideje</a></li>
           <li><a href="nacrt.html">Načrt informacijske rešitve</a></li>
-          <li><a href="#">Generiranje podatkov</a></li>
+          <li><a href="#" onclick="generiranjePodatkovHead()">Generiranje podatkov</a></li>
         </ul>
       </div>
     </div>
@@ -45,32 +45,37 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<div class="row">
-							<div class="col-lg-8 col-md-8 col-sm-8"><b>Kreiraj EHR zapis</b> za prvega bolnika</div>
+							<div class="col-lg-8 col-md-8 col-sm-8"><b>Kreiraj EHR zapis</b> ali zapiši obstoječ EHR zapis za prvega bolnika</div>
 							<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="preberiPredlogoBolnika"><option value=""></option><option value="Pujsa,Pepa,1938-10-30T14:58">Pujsa Pepa</option></select></div>
 						</div>
 					</div>
 					<div class="panel-body">
+						<span class="label label-default">EHR ID</span><input id="vstaviEHR" type="text" class="form-control input-mini" placeholder="7b661e12-3a98-21ad-c29e-2dc9f5a3d885">
+						<button type="button" class="btn btn-success btn-xs" onclick="preberiEHRodBolnika()">Preberi osnovne podatke o bolniku</button><span id="preberiSporocilo"></span>
 						<span class="label label-default">Ime</span><input id="kreirajIme" type="text" class="form-control input-mini" placeholder="Nathan">
 						<span class="label label-default">Priimek</span><input id="kreirajPriimek" type="text" class="form-control" placeholder="Drake">
 						<span class="label label-default">Datum rojstva</span><input id="kreirajDatumRojstva" type="text" class="form-control" placeholder="1957-03-10T09:08">
-						<button type="button" class="btn btn-primary btn-xs" onclick="kreirajEHRzaBolnika()">Dodaj osnovne podatke o bolniku</button><span id="kreirajSporocilo"></span>
+						<button type="button" class="btn btn-success btn-xs" onclick="kreirajEHRzaBolnika()">Dodaj osnovne podatke o bolniku</button><span id="kreirajSporocilo"></span>
 				  	</div>
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-6 col-sm-6">
-				<div class="panel panel-default">
-					<div class="panel-heading">
+									<div class="panel-heading">
 						<div class="row">
-							<div class="col-lg-8 col-md-8 col-sm-8"><b>Kreiraj drugega</b> bolnika</div>
+							<div class="col-lg-8 col-md-8 col-sm-8"><b>Kreiraj EHR zapis</b> ali zapiši obstoječ EHR zapis za drugega bolnika</div>
 							<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="preberiPredlogoBolnika"><option value=""></option><option value="Pujsa,Pepa,1938-10-30T14:58">Pujsa Pepa</option></select></div>
 						</div>
 					</div>
 					<div class="panel-body">
+						<span class="label label-default">EHR ID</span><input id="vstaviEHR" type="text" class="form-control input-mini" placeholder="492bb422-3b98-c2ad-c19e-fdc9f5a555na">
+						<button type="button" class="btn btn-primary btn-xs" onclick="preberiEHRodBolnika()">Preberi osnovne podatke o bolniku</button><span id="preberiSporocilo"></span>
 						<span class="label label-default">Ime</span><input id="kreirajIme2" type="text" class="form-control input-mini" placeholder="Mia">
 						<span class="label label-default">Priimek</span><input id="kreirajPriimek2" type="text" class="form-control" placeholder="Wallace">
-						<span class="label label-default">Datum rojstva</span><input id="kreirajDatumRojstva2" type="text" class="form-control" placeholder="1969-01-12T13:37">
+						<span class="label label-default">Datum rojstva</span><input id="kreirajDatumRojstva2" type="text" class="form-control" placeholder="1971-12-12T18:09">
+						<button type="button" class="btn btn-primary btn-xs" onclick="kreirajEHRzaBolnika2()">Dodaj osnovne podatke o bolniku</button><span id="kreirajSporocilo"></span>
 				  	</div>
 				</div>
+			</div>
 			</div>
 		</div>
 		<div class="row">
@@ -78,14 +83,16 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<div class="row">
-							<div class="col-lg-8 col-md-8 col-sm-8"><b>Vnos</b> meritve <b>teže in višine</b> bolnika</div>
+							<div class="col-lg-8 col-md-8 col-sm-8"><b>Vnos teže in višine</b> prvega bolnika</div>
 							<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="preberiObstojeciVitalniZnak"><option value=""></option><option value="b931580f-2b05-488b-985b-8d9ffb08ad02|2014-11-21T11:40Z|185|80.0|36.50|118|92|98|medicinska sestra Smrketa">Ata Smrk</option></select></div>
 						</div>
 					</div>
 					<div class="panel-body">
 						<span class="label label-default">Telesna višina</span><div class="input-group"><input id="dodajVitalnoTelesnaVisina" type="text" class="form-control input-mini" placeholder="1.85"><span class="input-group-addon">m</span></div>
 						<span class="label label-default">Telesna teža</span><div class="input-group"><input id="dodajVitalnoTelesnaTeza" type="text" class="form-control input-mini" placeholder="80.00"><span class="input-group-addon">kg</span></div>
-						<button type="button" class="btn btn-primary btn-xs disabled" onclick="izracunBMI()">Izračun BMI</button><span id="izracunBMI"></span>
+						<span class="label label-default">Sistolični krvni tlak</span><div class="input-group"><input id="dodajVitalnoKrvniTlakSistolicni" type="text" class="form-control input-mini" placeholder="118"><span class="input-group-addon">mm Hg</span></div>
+						<span class="label label-default">Diastolični krvni tlak</span><div class="input-group"><input id="dodajVitalnoKrvniTlakDiastolicni" type="text" class="form-control input-mini" placeholder="92"><span class="input-group-addon">mm Hg</span></div>
+						<button type="button" class="btn btn-success btn-xs disabled" onclick="izracunBMI()">Izračun BMI</button><span id="izracunBMI"></span>
 				  	</div>
 				</div>
 			</div>
@@ -93,13 +100,15 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<div class="row">
-								<div class="col-lg-8 col-md-8 col-sm-8"><b>Vnos</b> meritve <b>vitalnih znakov</b> bolnika</div>
+								<div class="col-lg-8 col-md-8 col-sm-8"><b>Vnos teže in višine</b> drugega bolnika</div>
 							<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="preberiObstojeciVitalniZnak"><option value=""></option><option value="b931580f-2b05-488b-985b-8d9ffb08ad02|2014-11-21T11:40Z|185|80.0|36.50|118|92|98|medicinska sestra Smrketa">Ata Smrk</option></select></div>
 						</div>
 					</div>
 					<div class="panel-body">
 						<span class="label label-default">Telesna višina</span><div class="input-group"><input id="dodajVitalnoTelesnaVisina2" type="text" class="form-control input-mini" placeholder="1.73"><span class="input-group-addon">m</span></div>
 						<span class="label label-default">Telesna teža</span><div class="input-group"><input id="dodajVitalnoTelesnaTeza2" type="text" class="form-control input-mini" placeholder="58.00"><span class="input-group-addon">kg</span></div>
+						<span class="label label-default">Sistolični krvni tlak</span><div class="input-group"><input id="dodajVitalnoKrvniTlakSistolicni2" type="text" class="form-control input-mini" placeholder="110"><span class="input-group-addon">mm Hg</span></div>
+						<span class="label label-default">Diastolični krvni tlak</span><div class="input-group"><input id="dodajVitalnoKrvniTlakDiastolicni2" type="text" class="form-control input-mini" placeholder="83"><span class="input-group-addon">mm Hg</span></div>
 						<button type="button" class="btn btn-primary btn-xs disabled" onclick="izracunBMI2()">Izračun BMI</button><span id="izracunBMI2"></span>
 				  	</div>
 				</div>
@@ -108,7 +117,7 @@
 		<div class="row">
 		  <div class="col-lg-13 col-md-13 col-sm-13">
 		    <div class="panel panel-default">
-		      <button type="button" class="btn btn-success btn-lg col-md-offset-11 " onclick="primerjaj()">Primerjaj</button><span id="primerjajBolnikaTEST"></span>
+		      <button type="button" class="btn btn-info btn-lg col-md-offset-11 " onclick="primerjaj()">Primerjaj</button><span id="primerjajBolnikaTEST"></span>
 		   </div>
 			</div>
 		</div>
@@ -132,7 +141,7 @@
 							.bullet .range.s0 { fill: #eee; }
 							.bullet .range.s1 { fill: #ddd; }
 							.bullet .range.s2 { fill: #ccc; }
-							.bullet .measure.s0 { fill: lightsteelblue; }
+							.bullet .measure.s0 { fill: green; }
 							.bullet .measure.s1 { fill: steelblue; }
 							.bullet .title { font-size: 14px; font-weight: bold; }
 							.bullet .subtitle { fill: #999; }

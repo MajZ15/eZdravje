@@ -49,8 +49,8 @@
                         Ciljna publika so zdravniki, ki bi s pomočjo aplikacije lahko primerjali paciente z  drugimi osebami s podobnimi simptomi 
                         oziroma s pacienti, ki so v preteklosti imeli ta problem. Prav tako lahko primerja podatke s svetovnim poveprečjem. 
                         Tako bi lahko opazovali kakšne metode so oziroma niso delovale na pacientih s podobnimi fizičnimi predispozicijami.
-                        V moji implementaciji primerja BMI (Body Mass Index) pacientov, vendar pa bi bila aplikacija 
-                        lahko namenjena za primerjavo tudi drugih podatkov.</p>
+                        V moji implementaciji primerja BMI (Body Mass Index), sistolični in diastolični krvni tlak pacientov, vendar pa bi bila aplikacija 
+                        lahko namenjena za primerjavo vrsto drugih podatkov/meritev.</p>
             <!-- KONEC: Opis ideje, ki jo aplikacija podpira -->
           </div>
         </div>
@@ -60,7 +60,8 @@
           </div>
           <div class="panel-body">
             <!-- ZAČETEK: Uporabljeni zunanji viri podatkov -->
-            <p><strong>TO-DO</strong>: Na tem mestu je navesti zunanji vir podatkov (URL naslov), na kakšen način ste ga uporabili (neposredni API klic, uvožena statična datoteka ipd.) in kaj je bil namen uporabe (kako se vključuje v osnovno idejo aplikacije).</p>
+            <p><strong>TO-DO</strong>: Uvozil sem statično .csv datoteke s strani http://apps.who.int/bmi/, ki vsebuje podatke o povprečnih vrednostih BMI po državah sveta.
+                                      To bom vključil v vizualizacijo primerjave med dvema pacientoma, da se bo videlo, ali sta nad ali pod splošnim povprečjemo.  </p>
             <!-- KONEC: Uporabljeni zunanji viri podatkov -->
           </div>
         </div>
@@ -70,7 +71,7 @@
           </div>
           <div class="panel-body">
             <!-- ZAČETEK: Master/detail načrtovalski vzorec -->
-            <p><strong>TO-DO</strong>: Na tem mestu morate navesti uporabljen master/detail načrtovalski vzorec in na kakšen način ga nameravate uporabiti.</p>
+            <p> Master/detail.</p>
             <!-- KONEC: Master/detail načrtovalski vzorec -->
           </div>
         </div>
@@ -80,7 +81,9 @@
           </div>
           <div class="panel-body">
             <!-- ZAČETEK: Uporabljeni zunanji viri podatkov -->
-            <p><strong>TO-DO</strong>: Na tem mestu je potrebno navesti uporabljeno tehniko vizualizacije podatkov (za pomoč lahko uporabite primer iz <a href="https://github.com/mbostock/d3/wiki/Gallery" target="_blank">D3.js galerije</a>) in zakaj je bila ta tehnika izbrana.</p>
+            <p> Izbral sem D3.js tehniko za vizualizacijo podatkov. In sicer tehniko "Bullet charts" (http://bl.ocks.org/mbostock/4061961#index.html),
+                                      ki sem jo nekoliko preuredil za svoje potrebe. To tehniko sem izbral zato, ker dobro prikaže razliko med dvema vrednostima istih podatkov,
+                                      kar je v moji aplikaciji ključnega pomena.</p>
             <!-- KONEC: Uporabljeni zunanji viri podatkov -->
           </div>
         </div>
