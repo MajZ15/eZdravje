@@ -45,6 +45,66 @@ function generirajPodatke(stPacienta) {
  * V primeru uspešne akcije izpiši sporočilo s pridobljenim EHR ID, sicer
  * izpiši napako.
  */
+ function izracunBMI() {
+ 	
+	var visina = $("#dodajVitalnoTelesnaVisina").val();
+	var teza = $("#dodajVitalnoTelesnaTeza").val();
+	
+	var BMI = (teza/(visina*visina));
+		$("#izracunBMI").html("<span class='obvestilo label " +
+      "label-success fade-in'>BMI = '" + BMI + "'</span>");
+
+	return BMI;
+ }
+ 
+  function izracunBMI2() {
+ 	
+	var visina = $("#dodajVitalnoTelesnaVisina2").val();
+	var teza = $("#dodajVitalnoTelesnaTeza2").val();
+	
+	var BMI = (teza/(visina*visina));
+		$("#izracunBMI2").html("<span class='obvestilo label " +
+      "label-success fade-in'>BMI = '" + BMI + "'</span>");
+
+	return BMI;
+ }
+ var i = 0;
+ function vrniVrednost(){
+ 	if (i >= 10){
+ 		i == 0;
+ 	}
+ 	var visina = $("#dodajVitalnoTelesnaVisina").val();
+ 	var visina2 = $("#dodajVitalnoTelesnaVisina2").val();
+ 	var teza = $("#dodajVitalnoTelesnaTeza").val();
+ 	var teza2 = $("#dodajVitalnoTelesnaTeza2").val();
+ 	var BMI = izracunBMI();
+ 	var BMI2 = izracunBMI2();
+ 	var ena = 0;
+ 	var dva = 0;
+ 	var tri = 0;
+ 	var stiri = 0;
+ 	var vrednosti =  [
+ 		visina,
+ 		visina2,
+ 		teza,
+ 		teza2,
+ 		BMI,
+ 		BMI2,
+ 		ena,
+ 		dva,
+ 		tri,
+ 		stiri
+ 	];
+ 	i++;
+ 	return vrednosti[i-1];
+ }
+ function primerjaj(){
+ 	i = 0;
+ 	izracunBMI();
+ 	izracunBMI2()
+ }
+ 
+ 
 function kreirajEHRzaBolnika() {
 	sessionId = getSessionId();
 
@@ -143,11 +203,11 @@ function dodajMeritveVitalnihZnakov() {
 	var datumInUra = $("#dodajVitalnoDatumInUra").val();
 	var telesnaVisina = $("#dodajVitalnoTelesnaVisina").val();
 	var telesnaTeza = $("#dodajVitalnoTelesnaTeza").val();
-	var telesnaTemperatura = $("#dodajVitalnoTelesnaTemperatura").val();
-	var sistolicniKrvniTlak = $("#dodajVitalnoKrvniTlakSistolicni").val();
-	var diastolicniKrvniTlak = $("#dodajVitalnoKrvniTlakDiastolicni").val();
-	var nasicenostKrviSKisikom = $("#dodajVitalnoNasicenostKrviSKisikom").val();
-	var merilec = $("#dodajVitalnoMerilec").val();
+		/*var telesnaTemperatura = $("#dodajVitalnoTelesnaTemperatura").val();
+		var sistolicniKrvniTlak = $("#dodajVitalnoKrvniTlakSistolicni").val();
+		var diastolicniKrvniTlak = $("#dodajVitalnoKrvniTlakDiastolicni").val();
+		var nasicenostKrviSKisikom = $("#dodajVitalnoNasicenostKrviSKisikom").val(); */
+	//var merilec = $("#dodajVitalnoMerilec").val();
 
 	if (!ehrId || ehrId.trim().length == 0) {
 		$("#dodajMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo " +

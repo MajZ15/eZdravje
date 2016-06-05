@@ -1,0 +1,7 @@
+[
+  {"title":"Višina","subtitle":"v metrih","ranges":[1.7,1.8,1.9],"measures":[1.85,1.73],"markers":[2.2]},
+  {"title":"Teza","subtitle":"v kilogramih","ranges":[55,75,100],"measures":[80,58],"markers":[120]},
+  {"title":"BMI","subtitle":"Body Mass Index","ranges":[18.5,25,30],"measures":[23.3,19.3],"markers":[35]},
+  {"title":"Nevem","subtitle":"neki","ranges":[1400,2000,2500],"measures":[1000,1650],"markers":[2100]},
+  {"title":"Zbrisi","subtitle":"neki","ranges":[3.5,4.25,5],"measures":[3.2,4.7],"markers":[4.4]}
+]
